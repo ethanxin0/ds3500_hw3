@@ -52,19 +52,7 @@ search_card = pn.Card(
 )
 
 
-plot_card = pn.Card(
-    pn.Column(
-        # Widget 1
-        # Widget 2
-        # Widget 3
-    ),
 
-    title="Plot", width=card_width, collapsed=True
-)
-plot_card = pn.Card(
-    pn.Column(plot),
-    title="Plot", width=card_width, collapsed=True
-)
 
 
 # LAYOUT
@@ -73,7 +61,6 @@ layout = pn.template.FastListTemplate(
     title="Dashboard Title Goes Here",
     sidebar=[
         search_card,
-        plot_card,
     ],
     theme_toggle=False,
     main=[
