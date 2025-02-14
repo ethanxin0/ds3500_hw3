@@ -29,10 +29,14 @@ def get_df(pitcher, batter_selection, date_picker):
 
 
 def get_plot(df):
-    return plot_strike_zone(local)
+    return plot_strike_zone(df)
 # CALLBACK BINDINGS (Connecting widgets to callback functions)
-catalog = pn.bind(pitcher, batter_selection, date_picker)
-plot = pn.bind(get_plot, pitcher, batter_selection, date_picker)
+#catalog = pn.bind(pitcher, batter_selection, date_picker)
+catalog = pn.Column(pitcher, batter_selection, date_picker)
+#plot = pn.bind(get_plot, pitcher, batter_selection, date_picker)
+df = pn.bind(get_df, pitcher, batter_selection, date_picker)
+plot = pn.bind(get_plot, df)
+
 # DASHBOARD WIDGET CONTAINERS ("CARDS")
 
 card_width = 320
@@ -57,6 +61,10 @@ plot_card = pn.Card(
 
     title="Plot", width=card_width, collapsed=True
 )
+plot_card = pn.Card(
+    pn.Column(plot),
+    title="Plot", width=card_width, collapsed=True
+)
 
 
 # LAYOUT
@@ -70,8 +78,8 @@ layout = pn.template.FastListTemplate(
     theme_toggle=False,
     main=[
         pn.Tabs(
-            ("Tab1", catalog),  # Replace None with callback binding
-            ("Tab2", plot),  # Replace None with callback binding
+            ("Tab1", plot),  # Replace None with callback binding
+            ("Tab2", catalog),  # Replace None with callback binding
             active=1  # Which tab is active by default?
         )
 
