@@ -15,17 +15,17 @@ def plot_strike_zone(pitch_data):
         y="plate_z",
         color="pitch_type",
         hover_data=["game_date", "player_name", "pitch_type", "description"],
-        title="2024 Strike Zone Plot",
-        labels={"plate_x": "Horizontal Location (plate_x)", "plate_z": "Vertical Location (plate_z)"},
+        title=f" {pitch_data["game_date"].unique()[0]}:  {pitch_data["player_name"].unique()[0]} Strike Zone Plot",
+        labels={"plate_x": "Horizontal Location (plate_x)", "plate_z": "Vertical Location (plate_z)"}
     )
 
 
 
-    # Add a rectangle for the strike zone (MLB dimensions)
+    # Add a rectangle for the strike zone 
     fig.add_shape(
         type="rect",
-        x0=-0.83, x1=0.83,  # Horizontal strike zone limits
-        y0=1.5, y1=3.5,  # Vertical strike zone limits
+        x0=-0.83, x1=0.83,  # Horizontal strike zone 
+        y0=1.5, y1=3.5,  # Vertical strike zone
         line=dict(color="black", width=2)
     )
 
