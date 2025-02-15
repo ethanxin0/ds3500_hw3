@@ -57,7 +57,8 @@ def game_stats(player_stats1):
         space = name.find(" ")
         last = name[space:].strip()
 
-        # some errors with diatrical marks on with player names so create dict to avoid those errors when plugging into API
+        # some errors with diatrical marks on with player names
+        # so create dict to avoid those errors when plugging into API
         known = {
             "Sanchez": 650911,
             "King": 650633,

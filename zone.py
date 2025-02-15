@@ -8,7 +8,8 @@ def plot_strike_zone(pitch_data):
     fig, ax = plt.subplots(figsize=(6, 7))
     
     # Scatter plot of pitch locations
-    ax.scatter(pitch_data["plate_x"], pitch_data["plate_z"], c=pitch_data["pitch_type"].astype("category").cat.codes,alpha=0.7, label =pitch_data["pitch_type"])
+    ax.scatter(pitch_data["plate_x"], pitch_data["plate_z"], c=pitch_data["pitch_type"]\
+               .astype("category").cat.codes,alpha=0.7, label =pitch_data["pitch_type"])
     
     # Draw the strike zone (standard MLB dimensions)
     strike_zone = plt.Rectangle((-0.83, 1.5), 1.66, 2.0, fill=False, color="black", linewidth=2)

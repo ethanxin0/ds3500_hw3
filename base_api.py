@@ -4,9 +4,10 @@ from zone2 import plot_strike_zone
 
 class BASEAPI:
 
-
     def load_base(self, filename):
         self.df = pd.read_csv(filename)
+
+
 
     def get_pitcher(self):
         return list(self.df["player_name"].unique())
@@ -35,10 +36,9 @@ class BASEAPI:
         if query == "R":
             return right_df
         else:
-            return left_df    
-        
-    def get_stats(self, name, date):
+            return left_df
 
+    def get_stats(self, name, date):
         temp = self.df[self.df["player_name"] == name]
         temp = temp[temp["game_date"] == date]
         return temp
